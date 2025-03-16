@@ -1,0 +1,9 @@
+# Ignore folders
+/dist
+/node_modules
+
+# Ignore files
+test.ts
+.DS_Store
+.env
+yarn.lock

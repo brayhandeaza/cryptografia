@@ -1,0 +1,10 @@
+# Ignore folders
+/src
+/node_modules
+
+# Ignore files
+.DS_Store
+.env
+yarn.lock
+tsconfig.json
+tsup.config.ts
