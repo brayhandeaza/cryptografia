@@ -1,15 +1,22 @@
-# Criptografia
+# Cryptografia
 
-Criptografia is a fast and easy-to-use cryptography library for JavaScript and TypeScript, designed to provide secure encryption and decryption functionalities with minimal setup. It supports RSA and AES algorithms for asymmetric and symmetric encryption, as well as various hashing, encoding, and decoding algorithms for securing data.
+Criptografia is a fast and easy-to-use cryptography library for JavaScript and TypeScript, designed to provide secure encryption and decryption functionalities with minimal setup. It supports ECC (Elliptic Curve Cryptography) and AES algorithms for asymmetric and symmetric encryption, as well as various hashing, encoding, and decoding algorithms for securing data.
 
 Whether you're transmitting sensitive messages, storing encrypted data, or handling secure user authentication, Criptografia offers a comprehensive set of tools for developers looking for robust security in their applications.
 
 ### With support for:
-- RSA (asymmetric encryption) for secure key exchange and message encryption
+- ECC (asymmetric encryption) for secure key exchange and message encryption
 - AES (symmetric encryption) for fast and efficient data encryption
 - Hashing algorithms like SHA-1, SHA-3, SHA-256, SHA-512, and MD5
 - Encoding and decoding algorithms including Base64 and Hex
 - Asynchronous and synchronous API options for different use cases
+
+## Installation
+
+Using npm:
+```sh
+npm install criptografia
+
 
 ## Installation
 
@@ -24,21 +31,18 @@ yarn add criptografia
 
 ## List of Contents: 
 <ul>
-    <li><a href="#usage-with-rsa">Usage with RSA</a></li>
-    <li><a href="#usage-with-aes">Usage with AES</a></li>
-    <li><a href="#usage-with-asynchronous-hashing-algorithms">Usage with Hash</a></li>
-    <li><a href="#usage-with-asynchronous-encoding-and-decoding-algorithms">Usage with Encoding and Decoding</a></li>
+ <li><a href="#usage-with-ecc">Usage with ECC</a></li> <li><a href="#usage-with-aes">Usage with AES</a></li> <li><a href="#usage-with-asynchronous-hashing-algorithms">Usage with Hash</a></li> <li><a href="#usage-with-asynchronous-encoding-and-decoding-algorithms">Usage with Encoding and Decoding</a></li>
 </ul>
 
-## Useage with RSA
+## Usage with ECC
 ```javascript
-import { RSA } from "criptografia";
+import { ECC } from "criptografia";
 
-const { publicKey, privateKey } = await RSA.generateKeysAsync();
+const { publicKey, privateKey } = await ECC.generateKeysAsync();
 
 const message = "Hello, World!";
-const encryptedMessage = await RSA.encryptAsync(message, publicKey);
-const decryptedMessage = await RSA.decryptAsync(encryptedMessage, privateKey);
+const encryptedMessage = await ECC.encryptAsync(message, publicKey);
+const decryptedMessage = await ECC.decryptAsync(encryptedMessage, privateKey);
 
 console.log("Original message:", message);
 console.log("Encrypted message:", encryptedMessage);
