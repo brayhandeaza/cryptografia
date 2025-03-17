@@ -16,13 +16,6 @@ Whether you're transmitting sensitive messages, storing encrypted data, or handl
 Using npm:
 ```sh
 npm install criptografia
-
-
-## Installation
-
-Using npm:
-```sh
-npm install criptografia
 ```
 Using yarn:
 ```sh 
