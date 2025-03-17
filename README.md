@@ -31,11 +31,11 @@ yarn add criptografia
 ```javascript
 import { ECC } from "criptografia";
 
-const { publicKey, privateKey } = await ECC.generateKeysAsync();
+const { publicKey, privateKey } = await ECC.generateKeyPairs();
 
 const message = "Hello, World!";
-const encryptedMessage = await ECC.encryptAsync(message, publicKey);
-const decryptedMessage = await ECC.decryptAsync(encryptedMessage, privateKey);
+const encryptedMessage = await ECC.encrypt(message, publicKey);
+const decryptedMessage = await ECC.decrypt(encryptedMessage, privateKey);
 
 console.log("Original message:", message);
 console.log("Encrypted message:", encryptedMessage);
