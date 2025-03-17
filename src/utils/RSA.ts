@@ -1,5 +1,7 @@
 import { BigInteger } from "jsbn";
 import { Buffer } from "buffer";
+import { HASH } from "./HASH";
+
 
 export class RSA {
     // ===============================================================================================================
@@ -94,6 +96,35 @@ export class RSA {
         const n = RSA.hexToBigInt(nHex);
         const c = RSA.hexToBigInt(cipherText);
         return RSA.bigIntToText(c.modPow(d, n));
+    }
+
+    // ===============================================================================================================
+    // Sign message
+    // ===============================================================================================================
+    static sign(message: string, privateKey: string) {
+        const [dHex, nHex] = privateKey.split(".");
+        const d = RSA.hexToBigInt(dHex);
+        const n = RSA.hexToBigInt(nHex);
+
+        const hashedMessage = HASH.sha256(message);
+        const hash = RSA.textToBigInt(hashedMessage);
+
+        return RSA.bigIntToHex(hash.modPow(d, n));
+    }
+
+    // ===============================================================================================================
+    // Verify signature
+    // ===============================================================================================================
+    static verify(message: string, signature: string, publicKey: string) {
+        const [eHex, nHex] = publicKey.split(".");
+        const e = RSA.hexToBigInt(eHex);
+        const n = RSA.hexToBigInt(nHex);
+
+        const hashedMessage = HASH.sha256(message);
+        const hash = RSA.textToBigInt(hashedMessage);
+
+        const decryptedHash = RSA.hexToBigInt(signature).modPow(e, n);
+        return hash.equals(decryptedHash);
     }
 
     // ===============================================================================================================
