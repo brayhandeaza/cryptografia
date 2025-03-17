@@ -46,12 +46,12 @@ console.log("Decrypted message:", decryptedMessage);
 ```javascript
 import { AES } from "criptografia";
 
-const key = await AES.generateKeyAsync();
+const key = await AES.generateKey();
 
 const message = 'Hello, world!';
-const encryptedMessage = await AES.encryptAsync(message, key);
-const decryptedText = await AES.decryptAsync(encryptedMessage, key);
-
+const encryptedMessage = await AES.encrypt(message, key);
+const decryptedText = await AES.decrypt(encryptedMessage, key);
+        
 console.log('Generated key:', key);
 console.log('Encrypted text:', encryptedMessage);
 console.log('Decrypted text:', decryptedText);
