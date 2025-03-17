@@ -6,12 +6,17 @@ export class ECC {
     private static ec = new elliptic.ec("secp256k1");
 
     // Generate EC key pair
-    static generateKeyPairs(): { publicKey: string; privateKey: string } {
-        const keyPair = ECC.ec.genKeyPair();
-        return {
-            publicKey: keyPair.getPublic("hex"),
-            privateKey: keyPair.getPrivate("hex"),
-        };
+    static async generateKeyPairs(): Promise<{ publicKey: string; privateKey: string }> {
+        try {
+            const keyPair = ECC.ec.genKeyPair();
+            return Promise.resolve({
+                publicKey: keyPair.getPublic("hex"),
+                privateKey: keyPair.getPrivate("hex"),
+            })
+
+        } catch (error) {
+            return Promise.reject(error)
+        }
     }
 
     // Encrypt using ECIES
@@ -19,7 +24,7 @@ export class ECC {
         const key = ECC.ec.keyFromPublic(publicKeyHex, "hex");
         const ephemeralKeyPair = ECC.ec.genKeyPair();
         const sharedSecret = ephemeralKeyPair.derive(key.getPublic());
-        
+
         const aesKey = CryptoJS.SHA256(sharedSecret.toString(16)).toString(CryptoJS.enc.Hex).substring(0, 32);
         const encryptedMessage = ECC.AESEncrypt(message, aesKey);
 
