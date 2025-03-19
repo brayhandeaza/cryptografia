@@ -1,15 +1,16 @@
 # Cryptografia
 
-Criptografia is a fast and easy-to-use cryptography library for JavaScript and TypeScript, designed to provide secure encryption and decryption functionalities with minimal setup. It supports ECC (Elliptic Curve Cryptography) and AES algorithms for asymmetric and symmetric encryption, as well as various hashing, encoding, and decoding algorithms for securing data.
+Criptografia is a fast and easy-to-use cryptography library for JavaScript and TypeScript, designed to provide secure encryption and decryption functionalities with minimal setup. It supports **ECC (Elliptic Curve Cryptography), RSA (Rivest-Shamir-Adleman), and AES (Advanced Encryption Standard)** algorithms for asymmetric and symmetric encryption. Additionally, it includes various hashing, encoding, and decoding algorithms to ensure data security.
 
 Whether you're transmitting sensitive messages, storing encrypted data, or handling secure user authentication, Criptografia offers a comprehensive set of tools for developers looking for robust security in their applications.
 
 ### With support for:
-- ECC (asymmetric encryption) for secure key exchange and message encryption
-- AES (symmetric encryption) for fast and efficient data encryption
-- Hashing algorithms like SHA-1, SHA-3, SHA-256, SHA-512, and MD5
-- Encoding and decoding algorithms including Base64 and Hex
-- Asynchronous and synchronous API options for different use cases
+- ECC (Elliptic Curve Cryptography) – Asymmetric encryption for secure key exchange and message encryption
+- RSA (Rivest-Shamir-Adleman) – Asymmetric encryption for secure data transmission and digital signatures
+- AES (Advanced Encryption Standard) – Symmetric encryption for fast and efficient data encryption
+- Hashing algorithms – Includes SHA-1, SHA-3, SHA-256, SHA-512, and MD5 for data integrity and security
+- Encoding and decoding algorithms – Supports Base64 and Hex for data representation and transmission
+- Asynchronous and synchronous API options – Provides flexibility for different use cases and performance needs
 
 ## Installation
 
@@ -24,11 +25,44 @@ yarn add criptografia
 
 ## List of Contents: 
 <ul>
- <li><a href="#usage-with-ecc">Usage with ECC</a></li> <li><a href="#usage-with-aes">Usage with AES</a></li> <li><a href="#usage-with-asynchronous-hashing-algorithms">Usage with Hash</a></li> <li><a href="#usage-with-asynchronous-encoding-and-decoding-algorithms">Usage with Encoding and Decoding</a></li>
+    <li><a href="#usage-with-ecc">Usage with RSA</a></li>
+    <li><a href="#usage-with-ecc">Usage with ECC</a></li>
+    <li><a href="#usage-with-aes">Usage with AES</a></li>
+    <li><a href="#usage-with-asynchronous-hashing-algorithms">Usage with Hash</a></li>
+    <li><a href="#usage-with-asynchronous-encoding-and-decoding-algorithms">Usage with Encoding and Decoding</a></li>
 </ul>
 
+
+## Usage with RSA
+```javascript
+// Signature and Verification
+const { publicKey, privateKey } = await RSA.generateKeysAsync();
+
+const message = "Hello, World!";
+const signature = await RSA.sign(message, privateKey);
+const isValid = await RSA.verify(message, signature, publicKey);
+        
+console.log("Public key:", publicKey);
+console.log("Private key:", privateKey);
+console.log("Original message:", message);
+console.log("Signature:", signature);
+console.log("Signature is valid:", isValid);
+```
+```javascript
+// // Encryption and Decryption
+const { publicKey, privateKey } = await RSA.generateKeysAsync(512); // Generate 512-bit keys, default is 2048
+
+const message = "Hello, World!";
+const encryptedMessage = await RSA.encryptAsync(message, publicKey);
+const decryptedMessage = await RSA.decryptAsync(encryptedMessage, privateKey);
+
+console.log("Original message:", message);
+console.log("Encrypted message:", encryptedMessage);
+console.log("Decrypted message:", decryptedMessage);
+```
 ## Usage with ECC
 ```javascript
+// Encryption and Decryption
 import { ECC } from "criptografia";
 
 const { publicKey, privateKey } = await ECC.generateKeyPairs();
@@ -41,9 +75,22 @@ console.log("Original message:", message);
 console.log("Encrypted message:", encryptedMessage);
 console.log("Decrypted message:", decryptedMessage);
 ```
+```javascript
+// Signature and Verification
+const { privateKey, publicKey } = await ECC.generateKeyPairs();
+
+const message = 'Hello, world!';
+
+const signature = await ECC.sign(message, privateKey);
+const isValid = await ECC.verify(message, signature, publicKey);
+
+console.log('Signature:', signature);
+console.log('Signature Valid:', isValid);
+```
 
 ## Usage with AES
 ```javascript
+// Encryption and Decryption
 import { AES } from "criptografia";
 
 const key = await AES.generateKey();
@@ -60,6 +107,7 @@ console.log('Decrypted text:', decryptedText);
 
 ## Usage with Asynchronous Hashing Algorithms
 ```javascript
+// Asynchronous Hashing Algorithms
 import { HASH } from "criptografia";
 
 const message = "Hello, World!";
@@ -82,6 +130,7 @@ console.log("MD5:", md5);
 ```
 ## Usage with Synchronous Hashing Algorithms
 ```javascript
+// Synchronous Hashing Algorithms
 import { HASH } from "criptografia";
 
 const message = "Hello, World!";
@@ -105,6 +154,7 @@ console.log("MD5:", md5);
 
 ## Usage with Synchronous Encoding and Decoding Algorithms
 ```javascript
+// Synchronous Encoding and Decoding Algorithms
 import { HASH } from "criptografia";
 
 const message = "Hello, World!";
@@ -126,6 +176,7 @@ console.log("Hex to String:", hexToString);
 
 ## Usage with Asynchronous Encoding and Decoding Algorithms
 ```javascript
+// Asynchronous Encoding and Decoding Algorithms
 import { HASH } from "criptografia";
 
 const message = "Hello, World!";
