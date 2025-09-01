@@ -7,4 +7,4 @@ test.ts
 .DS_Store
 .env
 yarn.lock
-.vscode/
+.vscode
