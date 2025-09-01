@@ -6,7 +6,7 @@ publish:
 	@yarn run build
 
 	@echo "Asigning new version..."
-	@npm version minor 
+	@npm version patch
 
 	@echo "Publishing..."
-	npm publish
+	@npm publish
