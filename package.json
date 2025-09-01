@@ -8,7 +8,11 @@
   "licenses": [
     {
       "type": "MIT",
+<<<<<<< HEAD
       "url": "https://github.com/brayhandeaza/criptografia/blob/master/%20LICENSE"
+=======
+      "url": "https://github.com/lpmrloki/cryptografia/LICENSE"
+>>>>>>> 8e273a1 (..)
     }
   ],
   "contributors": [
