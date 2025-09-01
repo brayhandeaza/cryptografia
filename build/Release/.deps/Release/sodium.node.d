@@ -1,0 +1,1 @@
+cmd_Release/sodium.node := c++ -bundle -undefined dynamic_lookup -undefined dynamic_lookup -Wl,-search_paths_first -mmacosx-version-min=11.0 -arch arm64 -L./Release -stdlib=libc++  -o Release/sodium.node Release/obj.target/libsodium/main.o /opt/homebrew/Cellar/libsodium/1.0.20/lib/libsodium.a

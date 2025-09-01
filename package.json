@@ -1,10 +1,16 @@
 {
   "name": "cryptografia",
   "description": "Encryption library",
-  "version": "0.0.10",
+  "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/lpmrloki/cryptografia/LICENSE"
+    }
+  ],
   "contributors": [
     "brayhandeaza",
     "lpmrloki"
