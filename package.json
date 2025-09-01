@@ -1,18 +1,15 @@
 {
   "name": "cryptografia",
   "description": "Encryption library",
-  "version": "0.0.0",
+  "version": "0.0.15",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "repository": "https://github.com/brayhandeaza/criptografia",
   "licenses": [
     {
       "type": "MIT",
-<<<<<<< HEAD
       "url": "https://github.com/brayhandeaza/criptografia/blob/master/%20LICENSE"
-=======
-      "url": "https://github.com/lpmrloki/cryptografia/LICENSE"
->>>>>>> 8e273a1 (..)
     }
   ],
   "contributors": [
